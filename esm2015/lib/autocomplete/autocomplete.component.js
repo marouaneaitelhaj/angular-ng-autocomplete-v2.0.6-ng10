@@ -560,7 +560,7 @@ export class AutocompleteComponent {
         const elementHeight = this.filteredListElement.nativeElement
             .clientHeight;
         /** @type {?} */
-        const atBottom = scrollHeight === scrollTop + elementHeight;
+        const atBottom = elementHeight != 0 && Math.abs(scrollHeight - elementHeight - scrollTop) < 1;
         if (atBottom) {
             this.scrolledToEnd.emit();
             this.isScrollToEnd = true;
